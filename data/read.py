@@ -6,10 +6,10 @@ def Average(lst):
 
 data1 = []
 data2 = []
-with open("log.txt",mode='r') as file:
+with open("/Users/crj/worklab/log/status.log",mode='r') as file:
 	for line in file:
-		# pattern = '%{NOTSPACE:timestamp}\s* %{NOTSPACE:level}\s* %{NOTSPACE:target}\s* %{INT:line} %{NOTSPACE:module}\s* %{NOTSPACE:thread}\s* - %{NOTSPACE:type},%{INT:fromid},%{INT:toid},%{INT:sendnum},%{INT:value},%{NUMBER:float}'
-		pattern = '[%{NOTSPACE:flag}\s*] %{NOTSPACE:timestamp}\s* - %{NOTSPACE:level}\s* - %{NOTSPACE:target}\s* - ,%{NOTSPACE:type},%{INT:ms},%{INT:toid},%{INT:sendnum},%{INT:value}'
+		pattern = '%{NOTSPACE:timestamp}\s* %{NOTSPACE:level}\s* %{NOTSPACE:target}\s* %{INT:line} %{NOTSPACE:module}\s* %{NOTSPACE:thread}\s* - %{NOTSPACE:type},%{INT:fromid},%{INT:toid},%{INT:sendnum},%{INT:value},%{NUMBER:float}'
+		# pattern = '[%{NOTSPACE:flag}\s*] %{NOTSPACE:timestamp}\s* - %{NOTSPACE:level}\s* - %{NOTSPACE:target}\s* - ,%{NOTSPACE:type},%{INT:ms},%{INT:toid},%{INT:sendnum},%{INT:value}'
 		xx = Grok(pattern)
 		y = xx.match(line)
 		# print(y['toid'])
