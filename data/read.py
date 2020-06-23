@@ -19,10 +19,11 @@ with open("/Users/crj/worklab/log/status.log",mode='r') as file:
 			data1.append(value)
 		else:
 			data2.append(value)
-	data_avg = Average(data2);
-	data_min = min(data2);
-	data_max = max(data2);
-	print( data_avg, data_max, data_min);
-	# plt.hist(data, bins=30, facecolor="blue", edgecolor="black", alpha=0.7)
-	plt.plot(data2)
-	plt.show()
+
+data_avg = Average(data2);
+data_min = min(data2);
+data_max = max(data2);
+print( data_avg, data_max, data_min);
+# plt.hist(data, bins=30, facecolor="blue", edgecolor="black", alpha=0.7)
+plt.plot(data2)
+plt.show()
