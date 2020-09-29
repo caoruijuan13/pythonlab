@@ -14,7 +14,7 @@ with open("/Users/crj/worklab/log/status.log",mode='r') as file:
 		pattern3 = '[%{NOTSPACE:flag}\s*] %{NOTSPACE:timestamp}\s* - %{NOTSPACE:level}\s* - %{NOTSPACE:target}\s* - ,%{NOTSPACE:type},%{INT:myid},%{INT:upid},%{INT:downid},%{INT:delay},%{NUMBER:throughput},%{NUMBER:lossrate}'
 		xx = Grok(pattern0)
 		y = xx.match(line)
-		print(y)
+#		print(y)
 		data_id = int(y['toid'])
 		value = int(y['value'])
 		if data_id == 1:
@@ -25,7 +25,8 @@ with open("/Users/crj/worklab/log/status.log",mode='r') as file:
 data_avg = Average(data2)
 data_min = min(data2)
 data_max = max(data2)
-print( data_avg, data_max, data_min)
-# plt.hist(data, bins=30, facecolor="blue", edgecolor="black", alpha=0.7)
-# plt.plot(data2)
-# plt.show()
+# print( data_avg, data_max, data_min)
+
+# plt.hist(data2, bins=30, facecolor="blue", edgecolor="black", alpha=0.7)
+plt.plot(data2)
+plt.show()
