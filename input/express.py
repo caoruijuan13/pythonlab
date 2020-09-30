@@ -35,26 +35,22 @@ def parse_text(text, type):
 	if type == 1:
 		pattern = "【%{NOTSPACE:type}】%{NOTSPACE}码%{NOTSPACE:number}至%{NOTSPACE}%{INT:id}号"
 	elif type == 2:
-		pattern = "%{INT:id}%"
-		if len(id) == 6:
-			pass
-		pattern = "【%{NOTSPACE:type}】%{NOTSPACE}%{INT:id}%{NOTSPACE}码%{INT:number}"
+		pattern = "【%{NOTSPACE:type}】%{NOTSPACE}%{INT:id}号"
 	else:
 		pattern = "【%{NOTSPACE:type}】%{NOTSPACE}码%{NOTSPACE:number}"
 
 	info = Grok(pattern).match(text)
 	print(info)
-	number = info["number"]
-	if type == 3:
-		number = number[0:8]
-		id = 0
-	else:
+	if type == 2:
+		number = "xxx"
 		id = info["id"]
-		if len(number) < len(id):
-			number = id
-			id = info["number"];
+	elif type == 3:
+		number = info["number"][0:8]
+		id = "0"
+	else:
+		number = info["number"]
+		id = info["id"]
 	return info["type"], number, id
-
 
 def make_ics(info, type, index):
 	date = info[0].split(" ")[0]
